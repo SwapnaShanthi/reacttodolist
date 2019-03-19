@@ -12,20 +12,20 @@ class TaskApp extends Component {
     constructor(props){
 
       super(props);
+      this.todoListItems=[{status:0,buttonColor:"beforeclick",itemDisplayName:"Learn React",visibility:true},
+                     {status:0,buttonColor:"beforeclick",itemDisplayName:"Learn Redux",visibility:true},
+                     {status:0,buttonColor:"beforeclick",itemDisplayName:"Learn Node",visibility:true}]
 
-      this.state={todoList:[{status:0,buttonColor:"beforeclick",itemDisplayName:"Learn React",visibility:true},{status:0,buttonColor:"beforeclick",itemDisplayName:"Learn Redux",visibility:true},{status:0,buttonColor:"beforeclick",itemDisplayName:"Learn Node",visibility:true}]}
+       this.state={todoList:this.todoListItems}                     
                  
        
     }
 
   checkItems=(index) => {
-
-    this.state.todoList[index].status=1;
-    this.state.todoList[index].buttonColor="afterclick";
-    let count = this.state.completedItemCount-1;
-    this.state.completedItemCount=count;
-    this.setState({todoList : this.state.todoList});
-    this.setState({completedItemCount: this.state.completedItemCount});
+    
+    this.todoListItems[index].status=1;
+    this.todoListItems[index].buttonColor="afterclick";
+    this.setState({todoList : this.todoListItems});
  
   }
 
@@ -33,7 +33,7 @@ class TaskApp extends Component {
 
     let count =0;
     for(let i=0;i<this.state.todoList.length;i++){
-      if(this.state.todoList[i].status==0){
+      if(this.state.todoList[i].status===0){
        count= count+1;
       }
     }
@@ -46,22 +46,22 @@ class TaskApp extends Component {
          
             if(itemStatus === "All"){
 
-                this.state.todoList[i].visibility=true;
+                this.todoListItems[i].visibility=true;
 
             }else if(itemStatus === "Active"){
 
                 if(this.state.todoList[i].status===0){
-                  this.state.todoList[i].visibility=true;
+                  this.todoListItems[i].visibility=true;
                 }else{
-                  this.state.todoList[i].visibility=false;
+                  this.todoListItems[i].visibility=false;
                 }
 
             }else if(itemStatus === "Completed"){
 
                 if(this.state.todoList[i].status===1){
-                  this.state.todoList[i].visibility=true;
+                  this.todoListItems[i].visibility=true;
                 }else{
-                  this.state.todoList[i].visibility=false;
+                  this.todoListItems[i].visibility=false;
                 }
             }
         }
