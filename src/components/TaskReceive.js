@@ -9,7 +9,7 @@ class TaskReceive extends Component {
 
   render() {
     return (
-     <div className="taskreceivediv"><input className="inputstyle" value="What needs to be done ?"></input></div>
+     <div className="taskreceivediv"><input className="inputstyle" defaultValue="What needs to be done ?"></input></div>
     );
   }
 }
